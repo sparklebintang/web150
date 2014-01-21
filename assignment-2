@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<title>If/when</title>
+	<meta charset="utf8">
+</head>
+<body>
+
+This space intentionally left blank.
+
+<script>
+
+var dessert = confirm("do you like dessert?");
+if (dessert) {
+	var selection = prompt("what do you like for dessert? (pie or ice cream)");
+	selection = selection.toLowerCase();
+	if (selection == "pie") {
+		var pies = prompt("how many do you like?");
+		if (pies == 1 || pies <= 2){
+			console.log("enjoy");
+		} else if (pies > 2) {
+			console.log("you have a big appetite");
+		}
+	} else if (selection == "ice cream") {
+		var iceCreams = prompt("how many do you like?");
+		if (iceCreams == 1 || iceCreams <= 2){
+			console.log("enjoy");
+		} else if (selection > 2) {
+			console.log("you have a big appetite");
+		}
+	}	
+}
+
+
+</script>
+</body>
+</html>
