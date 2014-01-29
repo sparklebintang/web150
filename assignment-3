@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<title>Royale with Cheese</title>
+	<meta charset=utf8>
+</head>
+<body>
+
+<script src="http://thomaswilburn.net/sccc/data/expenditures.js"></script>
+
+<script>
+
+//start with zero revenue
+var totalExpenditure = 0;
+var highestExpenditure = 0;
+var lowestExpenditure = 0;
+//for each movie,
+for (var i = 0; i < expenditure.amount; i++) {
+	//add the revenue to the running total
+	var expenditure = expenditure[i];
+	highestExpenditure = totalExpenditure + expenditure.amount;
+	lowestExpenditure = totalExpenditure - amount.expenditure;
+}
+//show
+console.log("The highest expenditure (by country): $" + highestExpenditure);
+console.log("The lowest expenditure (by country): $" + lowestExpenditure);
+
+var averageExpenditure = 0;
+for (var i = 0; i < expenditure.amount; i++) {
+	if (amount[i].average > 0) {
+		averageExpenditure++;
+	}
+}
+//find an average: divide total by the number of items
+console.log("Average military expenditure: " + totalExpenditure / averageCount);
+
+</body>
+</html>
