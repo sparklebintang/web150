@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+	<title>gallery!</title>
+	<meta charset="utf8">
+	<style>
+	
+.gallery { 
+	padding: 0; 
+	margin: 0;  
+	width: 500px; 
+	background: #EEE; 
+	font-size: 32px; 
+}
+
+.gallery li { 
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 4px 4px 0 0;
+	padding: 4px 12px;
+	background: #DDD;
+	float: center;
+}
+
+.gallery li.active {
+	background: white;
+	border-bottom: 1px solid red;
+}
+
+.pictures {
+	width:500px;
+	height:500px;
+}
+
+
+</style>
+</head>
+<body>
+
+	<ul class="gallery">
+		<li> <a href="#one">gallery 1</a> </li>
+		<li> <a href="#two">gallery 2</a> </li>
+		<li> <a href="#three">gallery 3</a> </li>
+	</ul>
+
+	<div class="gal" id="one">
+		<img src="images/Pur.jpg" alt="gallery 1" class:"pictures" />
+	</div>
+
+	<div class="gal" id="two">
+		<img src="images/bali.jpg" alt="gallery 2" class:"pictures" />
+	</div>
+
+	<div class="gal" id="three">
+		<img src="images/bali1.jpg" alt="gallery 3" class:"pictures" />
+	</div>
+
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js">
+	</script>
+
+	<script>
+
+var galleryLinks = $(".gallery a");
+galleryLinks.on("click", function(e) {
+	//hide current gal
+	$(".gal:visible").hide();
+	//get the <a> that was clicked
+	var $this = $(this);
+	//get its href value
+	var href = $this.attr("href");
+	//find the gal with that value
+	var gal = $(href);
+	//show it
+	gal.fadeIn();
+	//cancel the navigation
+	e.preventDefault();
+	//remove any .active classes on the page
+	$(".active").removeClass("active");
+	//find the <li> tag that was clicked
+	var li = $this.closest("li");
+	//add the active class to it
+	li.addClass("active");
+});
+
+var firstgal = galleryLinks.filter(":first");
+firstgal.click();
+
+	</script>
+    
+</body>
+</html>
