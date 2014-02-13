@@ -2,7 +2,209 @@
 <html>
 <head>
   <title>Selector Madness</title>
+  <met<!doctype html>
+<html>
+<head>
+  <title>Selector Madness</title>
   <meta charset="utf8">
+  <script>
+    //error check
+    window.onerror = function(e) { console.error("Script bug detected: check your code for errors"); }
+  </script>
+</head>
+<body>
+  
+  <div class="instructions">
+    <p>
+      On this page, you will use jQuery selectors and functions to find a number of elements on the page, and sometimes to make changes based on those selections. As you do, the icons next to each list item will change from a "fail" to a "pass." If you have any script errors, it will attempt to detect those as well and log a console error.
+    </p>
+    
+    <ol>
+<li id="sample">sample question</li>
+      <li id="tags">list items</li>
+      <li id="classes">web150 items</li>
+      <li id="ids">special item</li>
+      <li id="children">article's externals</li>
+      <li id="closest">aside's ancestor</li>
+      <li id="first">first &lt;ul&gt; colored</li>
+      <li id="odd">odd spans hidden</li>
+      <li id="html">animal =&gt; vegetable</li>
+      <li id="remove">removed internals</li>
+      <li id="add">finished</li>
+    </ol>
+  </div>
+  
+  <div id="article">
+    <h2>A Short, Mostly Incorrect History of JavaScript</h2>
+    
+    <p class="web150">
+      <a id="special">JavaScript</a> was invented in 1813, after <span>Sir</span> Wilhelm Script's first <span>disastrous</span> trip to the country now known as Indonesia. From these humble beginnings, it has grown to be one of the most popular <span>scripting</span> languages in the world, running on platforms such as:
+    </p>
+    
+    <ul>
+      <li class="external"> Browsers
+      <li class="internal"> Servers
+      <li class="external"> Player pianos
+    </ul>
+    
+    <aside class="web150">
+      Although its hard, metallic luster may fool <span>some</span> observers, JavaScript is not a mineral, but an <span class="animal">animal</span>. Practitions with an expert knowledge of the subject are said to be able to stop a man's heart with a single touch and to heal the sick. If viewed in the wild, back slowly away from JavaScript, and do not anger it.
+    </aside>
+    
+  </div>
+  
+  <!-- jQuery -->
+  <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+  
+  <script>
+  //YOUR SCRIPT GOES HERE
+  //0. Sample question: Find the body tag
+  var body = $("body");
+  
+  //1. Find all <li> tags on the page, and store in the following variable
+  var li = $("li");
+  console.log(li);
+  
+  //2. Find all tags with class web150, and store below
+  var class = $(".web150");
+  console.log(web150);
+  
+  //3. Find the tag with an id of special, and store below
+  var special = $("#id");
+  console.log(special);
+  
+  //4. Find all tags with a class of external, inside of a tag with the ID "article"
+  var children = $("body > article");
+  console.log(children);
+  
+  //5. Find the nearest ancestor <div> to the <aside> tag.
+  var closest = $("body span");
+  console.log(closest);
+  
+  //6. Find the first <ul> and change its text color to "green"
+  var ul = $("ul:first");
+  ul.css("color","green");
+  
+  //7. Find all odd-numbered span tags and hide them
+  var span = $("span:odd");
+  span.hide();
+  
+  //8. Find the span with a class of animal, and change its text to read "vegetable"
+  var span = $(".span:animal");
+  span.html("vegetable");
+  
+  //9. Find all tags with a class of "internal" and remove that class
+  var removeInternal = $(".internal");
+  removeInternal.removeClass("removeInternal");
+  
+  //10. Find all ordered lists on the page, and add the class "finished"
+  var addOl = $("ol");
+  addOl.addClass("finished");
+  
+  </script>
+  
+  <script>
+  //ERROR-CHECKING SCRIPT
+  
+  var selectors = {
+    tags: "bGk=",
+    classes: "LndlYjE1MA==",
+    ids: "I3NwZWNpYWw=",
+    children: "I2FydGljbGUgLmV4dGVybmFs",
+    closest: "I2FydGljbGU=",
+    first: "dWw=",
+    odd: "c3BhbjpudGgtY2hpbGQoMm4tMSk=",
+    html: "LmFuaW1hbA==",
+    add: "b2w=",
+    remove: "LmludGVybmFs"
+  };
+  
+  var qsa = document.querySelectorAll.bind(document);
+  var where = function(test) {
+    test = selectors[test] || test;
+    test = atob(test);
+    var d = $(test);
+    return [].slice.call(qsa(test));
+  }
+  
+  var match = function(a, b) {
+    if (!a || !b) return false;
+    if (a.length != b.length) return false;
+    for (var i = 0; i < a.length; i++) {
+      if (a[i] != b[i]) {
+        return false;
+      }
+    }
+    return true;
+  };
+  
+  var simple = function(v, t) {
+    if (typeof v == "string") {
+      t = v;
+      v = window[t];
+    }
+    return match.bind(null, v, where(t));
+  };
+  
+  var tests = {
+    sample: function() { return body && body.selector == "body" },
+    tags: simple(li, "tags"),
+    classes: simple("classes"),
+    ids: simple(special, "ids"),
+    children: simple("children"),
+    closest: simple("closest"),
+    first: function() { return where("first")[0].style.color == "green" },
+    odd: function() { return !(where("odd").filter(function(d) { return d.style.display !== "none" }).length) },
+    html: function() { return where("html")[0].innerHTML == "vegetable" },
+    add: function() { return where("add").filter(function(d) { return d.className.indexOf("finished") > -1 }).length },
+    remove: function() { return !where("remove").length }
+  };
+  
+  var checkQueries = function() {
+    for (var id in tests) {
+      var test = tests[id];
+      var result = test();
+      if (console && console.log) console.log(id, result);
+      document.querySelector("#" + id).className = result ? "pass" : "fail"
+    }
+  };
+  
+  window.addEventListener("load", function() {
+    setTimeout(checkQueries, 500);
+  });
+  </script>
+  <style>
+    .instructions {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 200px;
+      font-size: 12px;
+      background: rgba(255, 255, 255, .9);
+    }
+    
+    .instructions ol {
+      padding: 0;
+      list-style-position: inside;
+    }
+    
+    #article {
+      width: 500px;
+      margin: auto;
+    }
+    
+    .pass {
+      list-style-type: disc;
+      color: green;
+    }
+    .fail {
+      list-style-type: circle;
+      color: red;
+    }
+  </style>
+
+</body>
+</html>a charset="utf8">
   <script>
     //error check
     window.onerror = function(e) { console.error("Script bug detected: check your code for errors"); }
