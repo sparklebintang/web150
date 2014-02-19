@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+    <title>Functionality</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Functionality</h1>
+
+    <p>
+        For this assignment, edit the source code below and edit the provided functions so that the tests will pass. Tests will be output to the console.
+
+    <script>
+//Our assert function, since console.assert() only logs failures
+var assert = function(test, message) {
+    if (test) {
+        //passing test, use lovely .info() format!
+        console.info(message || "Test passed!");
+    } else {
+        //failed, use error()
+        console.error(message || "Test failed!");
+    }
+};
+
+//1. Create a function that returns a "doubled" string: "hello" -> "hellohello"
+var doubler = function(character) {
+	var length = character.length;
+	var double = length * 2;
+	character = "a";
+	return double;
+};
+
+assert( doubler("a") == "aa", "Double simple strings");
+assert( doubler("bbc") == "bbcbbc", "Double longer strings as well");
+
+//2. Create a function that converts decimal values into percentage strings: .01 -> "1%"
+var makePercentage = function(rounded) {
+	var length = rounded.length;
+	var percent = length * 100 + " % ";
+	rounded= ".13";
+	return double;
+};
+
+assert( makePercentage(.13) == "13%" );
+assert( makePercentage(1) == "100%" );
+assert( makePercentage(.456) == "45.6%", "Don't round your results");
+
+//3. Create a function that takes two numbers and adds them together. If you
+//feed it a string, it should convert it to a number first.
+var adder = function(add) {
+	var length = add.length;
+	if (typeof add == "object") {
+		add = [ add ]
+	}
+	var total = 0;
+	for (var i = 0; i < add.length; i++) {
+		total = total + add[i];
+	}
+	return total;
+};
+
+assert( adder(1, 2) == 3, "Numbers should be added together");
+assert( adder("2", 4) == 6, "Strings should be converted to numbers");
+assert( isNaN( adder("abc", 4) ) && typeof adder("abc", 4) == "number", "Bad input should result in NaN");
+
+//4. Using the concept of function scope, change the variable `greeting` to
+//read "Hello, world!" just by editing the function `sayHello`.
+var greeting;
+var sayHello = function(name) {
+	var helloTemplate = "Hello, {{name}}";
+	var helloReplaced = helloTemplate.replace("{{name}}", "World");
+	console.log(helloReplaced);
+};
+
+sayHello();
+assert( greeting == "Hello, world!", "sayHello() should alter greeting");
+
+//5. Remember our loops? They're back: update `findTotal` so that it totals up
+//all the numbers in an array that's passed in.
+var samples = [1, 2, 3, 4, 5];
+var findTotal = function(samples) {
+	var lenght = samples.length;
+	var total += length;
+	return total;
+};
+
+assert( findTotal(samples) == 15, "Function found the correct total");
+
+//6. BONUS: Using the idea of functions as objects, update `identity` so
+//that it calls the function that is passed in, and returns its value.
+var testFunction = function() { return "This value should pass through " };
+var identity = function() {};
+
+assert( identity(testFunction) == testFunction(), "(bonus) Identity function should call its argument");
+
+//7. BONUS: Combining loops and functions, you never have to write a loop
+//again. Update `filter` so that it:
+// a) takes as its arguments an array and a filter function,
+// b) calls that function on each item in the array
+// c) returns an array containing only items where the filter returned true
+
+var filter = function() {};
+
+//this function returns true if the item is an odd number
+var isOdd = function(item) {
+    return item % 2;
+};
+var filtered = filter(samples, isOdd);
+assert( filtered[0] == 1 && filtered[1] == 3 && filtered[2] == 5, "(bonus) Your first iterator function");
+
+    </script>
+</body>
+</html>
