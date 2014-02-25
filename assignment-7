@@ -21,10 +21,6 @@ canvas { display: block; }
 	<button class="color" data-color="pink">Pink</button>
 	<button class="color" data-color="orange">Orange</button>
 
-	/*
-	<button class="clear" data-clear="white">Clear</button>
-	*/
-
 	<canvas id="canvas" width=800 height=600></canvas>
 
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
@@ -76,6 +72,7 @@ $canvas.on("mousemove", function(e) {
 		/*} else if (brush.shape == "white") {
 			clearDraw(x, y, brush.size);
 		*/
+		}
 	}
 });
 
@@ -108,14 +105,6 @@ colors.on("click", function() {
 	var color = $this.attr("data-color");
 	brush.color = color;
 });
-
-/*var clears = $(".clear");
-clears.on("click", function() {
-	var $this = $(this);
-	var clear = $this.attr("data-clear");
-	brush.clear = clear;
-});
-*/
 
 </script>
 </body>
