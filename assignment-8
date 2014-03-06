@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Flickr Search</title>
+    <meta charset="utf8">
+  </head>
+  <body>
+  
+  <input id="search">
+  <button id="go">Go</button>
+  
+  <div class="results"></div>
+  
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script>
+
+var flickr = {
+  api_key: "ebbb1ffacf6a6f748e51e2141d9ec59b",
+  url: "http://api.flickr.com/services/rest/",
+  commands: {
+    search: "flickr.photos.search"
+  },
+  formatURL: function(photo, size) {
+    var template = "http://farm{farm}.staticflickr.com/{server}/{id}_{secret}_{size}.jpg";
+	// sizes, in order from smallest to biggest
+	// s < q < t < m < n < z < c < b < o
+    photo.size = size || "q"; 
+    for (var key in photo) {
+      template = template.replace("{"+key+"}", photo[key]);
+    }
+    return template;
+  }
+};
+
+/*
+Flickr APIs require the following parameters as a part of the query string:
+
+method: the command we want to run on Flickr's end
+api_key: the secret code for our account (flickr.api_key)
+format: should be "json"
+
+Additionally, Flickr requires the callback to be passed as "jsoncallback=...",
+so we need to set the jsonp parameter to that callback.
+
+See these pages for API docs:
+http://www.flickr.com/services/api/flickr.photos.search.html
+http://www.flickr.com/services/api/flickr.panda.getPhotos.html
+http://www.flickr.com/services/api/flickr.photos.getRecent.html
+*/
+
+var getFlickr = function(tag) {
+	var request = $.ajax({
+		url: flickr.url,
+		dataType: "jsonp",
+		jsonp: "jsoncallback",
+		data: {
+			method: flickr.commands.search,
+			api_key: flickr.api_key,
+			format: "json",
+			tags: tag
+		}
+	});
+	request.done(function(data) {
+		$(".results").empty();
+		for (var i = 0; i < data.photos.photo.length; i++) {
+			var photo = data.photos.photo[i];
+			var url = flickr.formatURL(photo);
+			console.log(url);
+			var img = $("<img>");
+			img.attr("src", url);
+			img.attr("title", photo.title);
+			$(".results").append(img);
+		}
+	});
+};
+
+var go = $("#go");
+go.on("click", function() {
+	var value = $("#search").val();
+	getFlickr(value);
+});
+
+    </script>
+  </body>
+</html>
