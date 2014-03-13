@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+  <title>Broken Windows</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <div class="slides">
+    <section>
+      <h1>THIS IS A SLIDE</h1>
+    </section>
+    <section>
+      <h2>Another day, another slide</h2>
+      <ul>
+        <li>Not the first slide</li>
+        <li>Not the last slide</li>
+        <li>Hence: middle slide?</li>
+      </ul>
+    </section>
+    <section>
+      <h2>All good things...</h2>
+      <p>
+        This is the last slide
+      </p>
+    </section>
+  </div>
+  <nav class="slide-controls">
+    <a class="previous">Previous</a>
+    <a class="next">Next</a>
+  </nav>
+  <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+  <script>
+    $(".slide-controls a").on("click", function() {
+      var $this = $(this);
+      var current = $(".slides section:visible");
+      var slide;
+      if ($this.is(".next")) { //add t
+        slide = current.next();
+      } else {
+        slide = current.prev();
+      }
+      $(".slides section").hide();
+      slide.fadeIn();
+    }); // add bracket
+
+    $(".slides section:not(:first)").hide();
+  <style>
+  
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.slides section {
+  display: block;
+  width: 800px;
+  height: 600px;
+  margin: auto;
+  background: #DDD;
+  background: radial-gradient(white, #DDD);
+  padding: 50px;
+  font-size: 48px;
+}
+
+.slides section > * {
+  margin: auto;
+  display: block;
+}
+
+.slides h1, h2 {
+  text-align: center;
+}
+
+.slides h1 {
+  font-size: 200%;
+}
+
+.slides h2 {
+  font-size: 150%;
+}
+
+.slide-controls {
+  text-align: center;
+}
+
+.slide-controls a {
+  display: inline-block;
+  width: 200px;
+  padding: 20px;
+  background: #AAA;
+}
+  </style>
+</body>
+</html>
