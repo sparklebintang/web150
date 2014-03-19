@@ -31,7 +31,7 @@
   <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
   <script>
     $(".slide-controls a").on("click", function() {
-      var $this = $(this);
+      $this = $(this); // no need var
       var current = $(".slides section:visible");
       var slide;
       if ($this.is(".next")) { //add t
@@ -44,6 +44,8 @@
     }); // add bracket
 
     $(".slides section:not(:first)").hide();
+	</script> // add closing script tag
+	
   <style>
   
 * {
