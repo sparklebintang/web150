@@ -1,0 +1,312 @@
+<!doctype html>
+<html>
+  <head>
+    <title>WEB150 Final Exam</title>
+    <meta charset="utf-8">
+  </head>
+  <!--
+  
+  INSTRUCTIONS:
+  
+  Save this page to your hard drive, using "HTML only" as the file type in the
+  save dialog. DO NOT save this file as "Complete HTML" or similar options. If
+  you do, the tests will be stuck, and you won't get any feedback on your
+  answers.
+  
+  Complete the exam by answering the questions in the section marked "YOUR
+  ANSWERS START HERE." As each question is answered correctly, the tests will
+  turn green when the page is refreshed. A sample question opens the test to
+  show how it's done.
+  
+  Be sure to keep your console open as you work to watch for errors. If the tests
+  do not appear as pass or fail, you have a syntax error that is preventing 
+  them from working. Check your code for typos and try again.
+  
+  -->
+  <body>
+  
+    <ul class="tests">
+      <li test="sample"> 0. Sample question
+      <li test="if-statement"> 1a. Write an <var>if</var> statement
+      <li test="plain-loop"> 1b. Write a <var>for</var> loop
+      <li test="combined-loop"> 1c. Write a conditional loop
+      <li test="select-classes"> 2a. Select via class name
+      <li test="select-id"> 2b. Select via ID
+      <li test="select-tags"> 2c. Select via tag name
+      <li test="select-descendants"> 2d. Select descendant elements
+      <li test="change-html"> 3a. Change the inner HTML of an element
+      <li test="change-css"> 3b. Change the style of an element
+      <li test="change-class"> 3c. Adjust the classes on an element
+      <li test="change-visibility"> 3d. Hide and show elements
+      <li test="event"> 4. Add an event listener to an element
+      <li test="functions"> 5. Write a custom function
+    </ul>
+    
+    <div class="article">
+      <h1>JavaScript: Your Next Steps</h1>
+      
+      <p>
+        Normally in the last week of class, I like to talk about where you can continue your JavaScript education. This quarter, due to external events, I didn't get around to that. So I'd like to take this opportunity, in these last few minutes together, to talk about good resources to check out if you think JavaScript is a language you'd like to continue studying.
+
+      <p>
+        Most <span class="redundant">JavaScript</span> programmers will point to a single book when asked about their professional development: <b id="good-parts">JavaScript: The Good Parts</b> by Douglas Crockford. Crockford did as much as anyone else to show the ways that JavaScript could be a serious, featureful programming language if examined with a critical eye. His book is extremely dense and slow to read, even at only 140 pages, and it is often wrong given what we know now about the ways that JavaScript is actually executed, but it is always wrong in interesting and educational ways.
+
+      <p>
+        Axel Rauschmeyer recently released an excellent book on the language itself called <b>Speaking JavaScript</b>, available online <a href="http://speakingjs.com/es5/" class="book">for free</a>. If you want a book that will cover more of the browser and a number of JavaScript libraries, I highly recommend David S. Flanagan's <b>JavaScript: The Definitive Guide</b>, both as a text and as a way to kill small vermin.
+
+      <p>
+        One of the best ways to continue learning about this language is to read the source code of projects that use it, since it has a strong open-source community around it. Reading code is also itself an important skill, since it's vital when working on a team with other developers who may not write the same way you do. Here are some starting points:
+        
+        <ol>
+          <li> The jQuery library itself <a href="http://james.padolsey.com/jquery/#v=2.0.3&fn=" class="source">is fairly readable</a>.
+          <li> Paul Irish on the Chrome team has a great <a href="" class="video">set</a> of <a href="" class="video">presentations</a> on things he learned by reading the jQuery source. 
+          <li> <a href="http://backbonejs.org/docs/backbone.html" class="source">Backbone</a> and <a href="http://underscorejs.org/docs/underscore.html" class="source">Underscore</a> both offer "literate" documentation for their source.
+          <li class="self-promotion"> I think the source code for <a href="https://github.com/thomaswilburn/Caret" class="source">Caret</a> is reasonably well-documented and clean.
+        </ol>
+
+      <p>
+        Finally, I would strongly suggest anyone who is working in front-end development and design to check out NodeJS, the server-side JavaScript runtime. A lot of the newest, most interesting tools for web development are written for Node, including <a href="http://lesscss.org" class="tooling">LESS</a>, <a href="http://gruntjs.com" class="tooling">Grunt</a>, <a href="http://bower.io" class="tooling">Bower</a>, <a href="http://yeoman.io" class="tooling">Yeoman</a>, <a href="http://atom.io" class="editor">Atom</a>, <a href="http://brackets.io" class="editor">Brackets</a>, and <a href="http://lighttable.com" class="editor">Light Table</a>.
+    </div>
+    
+  <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+  <script>
+  
+//YOUR ANSWERS START HERE
+
+//SAMPLE QUESTION
+
+// 0. Set the variable below named `sample` equal to true.
+
+var sample;
+
+// In this case, to complete the question, I'll change the line to read:
+
+// var sample = true;
+
+// Uncomment line 80 to make the change. The test will then be green.
+
+//SECTION 1. LOOPS AND CONDITIONALS
+//=================================
+
+// 1a. The code below stores the current time in hours in the variable named `hours`.
+// It also creates, but does not assign a value to, a variable named `isPM`. Write
+// an if statement that will assign a value to isPM. If `hours` is greater than 
+// twelve, `isPM` should be true. Otherwise, it should be false.
+
+var hours = new Date().getHours();
+var isPM = 12;
+
+if (hours > isPM  && hours >= isPM) {
+	console.log("it is afternoon");
+	} else if (hours < isPM && hours <= isPM) {
+	console.log("still morning sunshine");
+}
+
+
+// 1b. The variable named `pets` contains the number of pets in each apartment of
+// my building. How many pets are there in total? Write a loop that will add the
+// list together and answer the question, storing the result in `petTotal`.
+
+var pets = [2, 1, 2, 0, 0, 2];
+var petTotal = 0;
+
+for (var i = 0; i < pets.length; i++) {
+	petTotal += pets[i];
+}
+console.log(petTotal);
+
+// 1c. Working with pets again, write another loop that will count the number of
+// apartments without any pets, then store that value in `petless`.
+
+var petless = 0;
+for (var i = 0; i < pets.length; i++) {
+	petless = petTotal - i;
+}
+console.log(petless);
+
+//2. SELECTORS
+
+// 2a. Find all the tags on the page with a class of "video", and store them
+// in the variable below named `youtube`
+var youtube = $(".video");
+
+
+// 2b. Find the tag with an id of "good-parts" and store it in the variable
+// below named `crockford`
+var crockford = $("#good-parts");
+
+
+// 2c. Find all the <span> tags in the document and store them in the variable 
+// below named `spans`
+var spans = $("span") ;
+
+
+// 2d. Find all the <li> tags inside of the element with a class of "article"
+// and store them in the variable below named `list`
+var list = $(".article li");
+
+
+//3. DOM MANIPULATION
+
+// 3a. Find the element with a class of "redundant" and change its text to "web"
+var change = $(".redundant");
+change.html("web");
+
+// 3b. Find all links on the page and change their color style to "blue"
+var links = $("a");
+links.css("color","blue");
+
+// 3c. Find all elements with a class of "book" and add the class "highlight"
+var add = $(".book");
+add.addClass("highlight"); 
+
+
+// 3d. Hide all elements with the class of "self-promotion"
+var hide = $(".self-promotion");
+hide.hide();
+
+
+//4. EVENTS
+
+// Select the <h1> tag above, and add a click listener to it. When the user clicks
+// on the element, it should change its contents to read (without the slashes): 
+// THIS SPACE INTENTIONALLY LEFT BLANK.
+
+// The test script built into this exam will automatically click on it--you should
+// see it change immediately if you've set up your click correctly
+
+
+
+//5. FUNCTIONS
+
+// Fill in the blank function below, in order to create a simple rock-paper-
+// scissors game. It should take two arguments, each of which is a string: "rock",
+// "paper", or "scissors". As always, rock should beat scissors, scissors beats
+// paper, and paper beats rock. If the first player wins, return the number 1.
+// If the second player wins the exchange, return 2. In case of a tie, return 0.
+
+// You will probably find it helpful to write some testing code below that will
+// call `rps` with various values, and make sure that they return the expected
+// result. 
+
+var rps = function(argX, argY) {
+	var argX;
+	var argY;
+	var result = 0;
+	if (argX > argY){
+		for (var i = 0; i < argX.length; i++) {
+		var resultX = result + i;
+		return resultX;
+		}
+	} else if (argY < argX){
+		for (var i = 0; i < argY.length; i++) {
+		var resultY = result + i;
+		return resultY;
+		}
+	}
+};
+if (resultX == resultY){
+	var result = resultX - resultY
+	return result; 
+}
+
+
+  </script>
+  <style>
+
+body { margin: 8px auto; width: 700px; font-family: droid sans, calibri, monospace; }
+ul { margin: auto; width: 400px; padding: 0; }
+ul li { margin: 0 0 4px; list-style-type: none; }
+[test] { color: #AAA }
+[test].pass, [test].fail { color: black }
+[test]::after { color: white; font-weight: bold; float: right; width: 50px; text-align: center; }
+[test].pass::after { content: "PASS"; background: green }
+[test].fail::after { content: "FAIL"; background: red }
+.highlight { background: yellow }
+  
+  </style>
+<script 
+  id=_
+  src="data:text/javascript;base64,
+  bmV3IEZ1bmN0aW9uKGF0b2IoXy5pbm5lckhUTUwucmVwbGFjZSgvXG58XHxbXHNcU10rL2csIiIpKSkoKTsK"
+>
+c2V0VGltZW91dChmdW5jdGlvbigpIHsKICAoZnVu
+Y3Rpb24ocSkgewogICAgdmFyIHRhZ3MgPSBxKCJz
+Y3JpcHQiKTsKICAgIHZhciBzY3JpcHQgPSB0YWdz
+W3RhZ3MubGVuZ3RoIC0gMV07CiAgICBzY3JpcHQg
+PSBzY3JpcHQuaW5uZXJIVE1MCiAgICBzY3JpcHQg
+PSBzY3JpcHQuc3BsaXQoInwiKS5wb3AoKTsKICAg
+IHNjcmlwdCA9IHNjcmlwdC5yZXBsYWNlKC9cbi9n
+LCAiIik7CiAgICBmb3IgKHZhciBpID0gMDsgaSA8
+IHNjcmlwdC5sZW5ndGg7IGkgKz0gMikgewogICAg
+ICBzY3JpcHRbaV0gPSBTdHJpbmcuZnJvbUNoYXJD
+b2RlKHNjcmlwdC5jaGFyQ29kZUF0KGkpIC0gMTMp
+OwogICAgfQogICAgKG5ldyBGdW5jdGlvbihhdG9i
+KHNjcmlwdCkpKSgpOwogIH0pLmNhbGwobnVsbCwg
+ZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbC5iaW5k
+KGRvY3VtZW50KSkKfSk7|IWZ1bmN0aW9uKGUsbix
+0LHIsbyl7dmFyIHM9ZnVuY3Rpb24oZSl7cmV0dXJ
+uW10uc2xpY2UuY2FsbChuLnF1ZXJ5U2VsZWN0b3J
+BbGwoZSkpfSxjPWZ1bmN0aW9uKGUpe3JldHVybiB
+uLnF1ZXJ5U2VsZWN0b3IoZSl9LGk9ZnVuY3Rpb24
+oZSxuKXtyZXR1cm4ic3RyaW5nIj09dHlwZW9mIGU
+mJihlPXMoZSkpLG4udG9BcnJheSYmKG49bi50b0F
+ycmF5KCkpLGUubGVuZ3RoIT1uLmxlbmd0aD8hMTo
+hZS5zb21lKGZ1bmN0aW9uKGUsdCl7cmV0dXJuIGU
+hPT1uW3RdfSl9LHU9e3NhbXBsZTpmdW5jdGlvbig
+pe3JldHVybiBlLnNhbXBsZX0sImlmLXN0YXRlbWV
+udCI6ZnVuY3Rpb24oKXtyZXR1cm4idW5kZWZpbmV
+kIiE9dHlwZW9mIGlzUE0mJmlzUE09PWhvdXJzPjE
+yfSwicGxhaW4tbG9vcCI6ZnVuY3Rpb24oKXtyZXR
+1cm4idW5kZWZpbmVkIiE9dHlwZW9mIHBldFRvdGF
+sJiY3PT1wZXRUb3RhbH0sImNvbWJpbmVkLWxvb3A
+iOmZ1bmN0aW9uKCl7cmV0dXJuInVuZGVmaW5lZCI
+hPXR5cGVvZiBwZXRsZXNzJiYyPT1wZXRsZXNzfSw
+ic2VsZWN0LWNsYXNzZXMiOmZ1bmN0aW9uKCl7cmV
+0dXJuIGkoIi52aWRlbyIseW91dHViZXx8W10pfSw
+ic2VsZWN0LWlkIjpmdW5jdGlvbigpe3JldHVybiB
+pKCIjZ29vZC1wYXJ0cyIsY3JvY2tmb3JkfHxbXSl
+9LCJzZWxlY3QtdGFncyI6ZnVuY3Rpb24oKXtyZXR
+1cm4gaSgic3BhbiIsc3BhbnN8fFtdKX0sInNlbGV
+jdC1kZXNjZW5kYW50cyI6ZnVuY3Rpb24oKXtyZXR
+1cm4gaSgiLmFydGljbGUgbGkiLGxpc3R8fFtdKX0
+sImNoYW5nZS1odG1sIjpmdW5jdGlvbigpe3JldHV
+ybiJ3ZWIiPT1jKCIucmVkdW5kYW50IikuaW5uZXJ
+IVE1MfSwiY2hhbmdlLWNzcyI6ZnVuY3Rpb24oKXt
+yZXR1cm4iYmx1ZSI9PWMoImEiKS5zdHlsZS5jb2x
+vcn0sImNoYW5nZS1jbGFzcyI6ZnVuY3Rpb24oKXt
+yZXR1cm4gYygiLmJvb2siKS5jbGFzc05hbWUuaW5
+kZXhPZigiaGlnaGxpZ2h0Iik+LTF9LCJjaGFuZ2U
+tdmlzaWJpbGl0eSI6ZnVuY3Rpb24oKXtyZXR1cm4
+hYygiLnNlbGYtcHJvbW90aW9uIikuZ2V0Qm91bmR
+pbmdDbGllbnRSZWN0KCkud2lkdGh9LGV2ZW50OmZ
+1bmN0aW9uKCl7aWYoIWUuJClyZXR1cm4hMTskKCJ
+oMSIpLmNsaWNrKCk7dmFyIG49JCgiaDEiKS5odG1
+sKCkudG9VcHBlckNhc2UoKS5yZXBsYWNlKC9bL3M
+vV10vZywiIik7cmV0dXJuIG49PSJUSElTIFNQQUN
+FIElOVEVOVElPTkFMTFkgTEVGVCBCTEFOSy4iLnJ
+lcGxhY2UoL1svcy9XXS9nLCIiKX0sZnVuY3Rpb25
+zOmZ1bmN0aW9uKCl7dmFyIGU9WyJyb2NrLXNjaXN
+zb3JzIiwic2Npc3NvcnMtcGFwZXIiLCJwYXBlci1
+yb2NrIl0ubWFwKGZ1bmN0aW9uKGUpe3JldHVybiB
+lLnNwbGl0KCItIil9KSxuPVsicGFwZXItc2Npc3N
+vcnMiLCJyb2NrLXBhcGVyIiwic2Npc3NvcnMtcm9
+jayJdLm1hcChmdW5jdGlvbihlKXtyZXR1cm4gZS5
+zcGxpdCgiLSIpfSksdD1lLmV2ZXJ5KGZ1bmN0aW9
+uKGUpe3JldHVybiAxPT1ycHMoZVswXSxlWzFdKX0
+pLHI9bi5ldmVyeShmdW5jdGlvbihlKXtyZXR1cm4
+gMj09cnBzKGVbMF0sZVsxXSl9KTtyZXR1cm4gdCY
+mciYmMD09cnBzKCJyb2NrIiwicm9jayIpfX0sbD1
+uLnF1ZXJ5U2VsZWN0b3IuYmluZChuKSxhPWZ1bmN
+0aW9uKGUpe3JldHVybltdLnNsaWNlLmNhbGwobi5
+xdWVyeVNlbGVjdG9yQWxsKGUpKX0sZj1hKCIudGV
+zdHMgbGkiKTtmLmZvckVhY2goZnVuY3Rpb24oZSl
+7dmFyIG49ZS5nZXRBdHRyaWJ1dGUoInRlc3QiKTt
+pZih1W25dKXt2YXIgdD11W25dKCk7ZS5jbGFzc05
+hbWU9dD8icGFzcyI6ImZhaWwifX0pfSh3aW5kb3c
+sZG9jdW1lbnQsY29uc29sZSxzZXRUaW1lb3V0KTs
+=
+</script>
+
+  </body>
+</html>
